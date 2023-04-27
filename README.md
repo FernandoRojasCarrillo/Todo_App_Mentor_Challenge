@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github solution](https://github.com/DF27ARTS/Todo_App_Mentor_Challenge)
+- Live Site URL: [Live site](https://todo-app-mentor-challenge.vercel.app)
 
 ## My process
 

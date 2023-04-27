@@ -1,11 +1,13 @@
 import { useState } from "react";
 import sunIcon from "../images/icon-sun.svg";
+import moonIcon from "../images/icon-moon.svg";
 import SingleTask from "./SingleTask";
 
 import { v4 as uuidv4 } from "uuid";
 
 const TodoForm = () => {
   const [input, setInput] = useState("");
+  const [themeIcon, setThemeIcon] = useState(sunIcon);
   const [tasks, setTasks] = useState([
     {
       id: uuidv4(),
@@ -164,9 +166,9 @@ const TodoForm = () => {
           target.currentSrc.split("/").length - 1
         ] === "icon-sun.svg"
       ) {
-        themeButton.src = `${target.baseURI}src/images/icon-moon.svg`;
+        setThemeIcon(moonIcon);
       } else {
-        themeButton.src = `${target.baseURI}src/images/icon-sun.svg`;
+        setThemeIcon(sunIcon);
       }
       themeButton.style.transform = "scale(1)";
     }, 300);
@@ -178,7 +180,7 @@ const TodoForm = () => {
         <h1 className="form-title">TODO</h1>
         <img
           onClick={(e) => HandleSetTheme(e)}
-          src={sunIcon}
+          src={themeIcon}
           alt=""
           className="app-theme-icon"
         />
