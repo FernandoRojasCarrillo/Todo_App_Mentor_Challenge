@@ -161,11 +161,7 @@ const TodoForm = () => {
     mainApp?.classList.toggle("light-theme");
 
     setTimeout(() => {
-      if (
-        target.currentSrc.split("/")[
-          target.currentSrc.split("/").length - 1
-        ] === "icon-sun.svg"
-      ) {
+      if (mainApp?.classList.contains("light-theme")) {
         setThemeIcon(moonIcon);
       } else {
         setThemeIcon(sunIcon);
