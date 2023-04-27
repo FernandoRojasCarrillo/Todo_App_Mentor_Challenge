@@ -1,0 +1,76 @@
+
+@use "variables" as *;
+@use "todo-form";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  flex: none;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+
+body {
+  min-height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  font-family: var(--font-family);
+  scroll-behavior: smooth;
+
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+    background: var(--very-dark-grayish-blue-two);
+  }
+
+  &::-webkit-scrollbar-track {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--dark-grayish-blue-2);
+    border-radius: 50rem;
+  }
+}
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden !important;
+
+  --bg-image: url("../images/bg-desktop-dark.jpg");
+  --bg-color: var(--very-dark-blue);
+  
+  @media screen and (max-width: $phone-layout) {
+    --bg-image: url("../images/bg-mobile-dark.jpg");
+  }
+  
+  
+  background-image: var(--bg-image);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  background-color: var(--bg-color);
+
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+  
+  &.light-theme {
+    --bg-image: url("../images/bg-desktop-light.jpg");
+    --bg-color: var(--very-light-gray);
+
+    @media screen and (max-width: $phone-layout) {
+      --bg-image: url("../images/bg-mobile-light.jpg");
+    }
+  }
+}

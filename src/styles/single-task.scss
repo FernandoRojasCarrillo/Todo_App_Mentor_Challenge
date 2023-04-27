@@ -1,0 +1,114 @@
+@use "variables" as *;
+
+.individual-task-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover .task-check-box::before {
+    background: var(--check-background);
+  }
+
+
+  .task-check-box {
+    height: 1.3rem;
+    aspect-ratio: 1;
+    background: var(--very-dark-desaturated);
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: grid;
+    place-content: center;
+    position: relative;
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+
+    &::before {
+      position: absolute;
+      content: "";
+      inset: -.05rem;
+      margin: auto;
+      background: var(--very-dark-grayish-blue-two);
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      transform: translateZ(-2px);
+    }
+    
+    &:hover::before {
+      background: var(--check-background);
+    }
+
+    &[area-checked=checked] {
+      background: var(--check-background);
+
+      &.animation-active {
+        animation: checked 250ms ease-out;
+        @keyframes checked {
+          0% { transform: scale(0); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+      }
+
+      
+      &::before {
+        background: var(--check-background);
+      }
+    }
+
+    .task-check-box-icon {
+      z-index: 200;
+    }
+  }
+
+  .task-message {
+    flex-grow: 1;
+    color: var(--light-grayish-blue);
+    max-width: 23rem;
+    overflow: hidden;
+
+    @media screen and (max-width: $phone-layout) {
+      max-width: 12rem;
+      line-height: 1.5;
+    }
+
+    &[area-checked=checked] {
+      color: var(--dark-grayish-blue);
+      text-decoration: line-through;
+    }
+  }
+
+  .task-delete-btn {
+    cursor: pointer;
+    z-index: 200;
+
+    transition: transform 250ms ease-out;
+    transform: scale(0);
+
+    @media screen and (max-width: $phone-layout) {
+      transform: scale(1);
+    }
+  }
+}
+
+.light-theme {
+  .task-check-box {
+    background: var(--white);
+
+    &::before {
+      background: var(--light-grayish-blue);
+    }
+  }
+  
+  .task-message {
+    color: var(--very-dark-grayish-blue);
+
+    &[area-checked=checked] {
+      color: var(--light-grayish-blue);
+    }
+  }
+}
