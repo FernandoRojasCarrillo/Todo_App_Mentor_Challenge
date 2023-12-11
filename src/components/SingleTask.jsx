@@ -18,10 +18,10 @@ const SingleTask = ({ task, CheckTask, DeleteTask }) => {
       className="individual-task-container"
     >
       <div
-        area-checked={task.complited ? "checked" : ""}
+        area-checked={task.completed ? "checked" : ""}
         className="task-check-box"
       >
-        {task.complited ? (
+        {task.completed ? (
           <svg
             className="task-check-box-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ const SingleTask = ({ task, CheckTask, DeleteTask }) => {
         ) : null}
       </div>
       <div
-        area-checked={task.complited ? "checked" : ""}
+        area-checked={task.completed ? "checked" : ""}
         className="task-message"
       >
         {task.text}
