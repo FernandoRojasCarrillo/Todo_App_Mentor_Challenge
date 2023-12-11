@@ -11,22 +11,22 @@ const TodoForm = () => {
   const [tasks, setTasks] = useState([
     {
       id: uuidv4(),
-      complited: true,
+      completed: true,
       text: "Complete online JavaScript course",
     },
     {
       id: uuidv4(),
-      complited: false,
+      completed: true,
       text: "Watch Starship's second launch attempt",
     },
-    { id: uuidv4(), complited: false, text: "Jog around the park 3x" },
-    { id: uuidv4(), complited: false, text: "10 minutes meditation" },
-    { id: uuidv4(), complited: false, text: "Read for 1 hour" },
-    { id: uuidv4(), complited: false, text: "Pick up groceries" },
+    { id: uuidv4(), completed: false, text: "Jog around the park 3x" },
+    { id: uuidv4(), completed: false, text: "10 minutes meditation" },
+    { id: uuidv4(), completed: false, text: "Read for 1 hour" },
+    { id: uuidv4(), completed: false, text: "Pick up groceries" },
     {
       id: uuidv4(),
-      complited: true,
-      text: "Complete Todo App on Fronend Mentor",
+      completed: true,
+      text: "Complete Todo App on Frontend Mentor",
     },
   ]);
   const [shownTask, setShownTasks] = useState(null);
@@ -103,14 +103,14 @@ const TodoForm = () => {
   };
 
   /* _____ Tasks information Handlers _____ */
-  const TasksLeft = tasks.filter((task) => task.complited === false).length;
+  const TasksLeft = tasks.filter((task) => task.completed === false).length;
   const CheckTask = (id) => {
     setTasks([
       ...tasks.map((task) => {
         if (task.id === id) {
           return {
             ...task,
-            complited: !task.complited,
+            completed: !task.completed,
           };
         } else {
           return task;
@@ -132,7 +132,7 @@ const TodoForm = () => {
   };
 
   const ClearComplited = () => {
-    setTasks([...tasks.filter((task) => task.complited === false)]);
+    setTasks([...tasks.filter((task) => task.completed === false)]);
 
     setShownTasks(null);
   };
@@ -204,7 +204,7 @@ const TodoForm = () => {
           >
             {tasks.length &&
               tasks
-                .filter((task) => task.complited !== shownTask)
+                .filter((task) => task.completed !== shownTask)
                 .map((task, index) => (
                   <div
                     key={index}
